@@ -2,6 +2,8 @@ package com.example.EmployeeDB;
 
 
 
+import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +28,20 @@ public class ApplicationCommandRunner implements CommandLineRunner {
 
 		logger.info("Welcome to the runner from commandLineRunner to test JPA mapping 1:n");
 		logger.info("Data creation Employee started...");
-
+		
+		List<Employee> employees = employeeRepository.findItemByAge(20);
+		
+		System.out.println("employees greater than 50: " + employees.size());
+		System.out.println("Employees: \n" + employees);
+		
+		employees.clear();
+		
+		employees = employeeRepository.findItemBySurname("Cormier");
+		
+		System.out.println("employees surname: " + employees.size());
+		System.out.println("Employees: \n" + employees);
+		
+		
 		Faker faker = new Faker();
 
 		for (int i = 1; i <101; i++) {

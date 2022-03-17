@@ -17,5 +17,9 @@ public interface EmployeeRepository extends MongoRepository<Employee, String> {
     
     @Query(value="{category:'?0'}", fields="{'name' : 1, 'age' : 1}")
     List<Employee> findAll(String surname);
+
+	List<Employee> findItemByAge(int age);
+
+	List<Employee> findItemBySurname(String surname);
     
 }
